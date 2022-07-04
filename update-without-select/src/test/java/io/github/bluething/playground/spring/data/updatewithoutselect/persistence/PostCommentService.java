@@ -13,9 +13,6 @@ public class PostCommentService {
     private final PostCommentRepository postCommentRepository;
     private final PostRepository postRepository;
 
-    @PersistenceContext
-    EntityManager entityManager;
-
     @Autowired
     public PostCommentService(PostCommentRepository postCommentRepository, PostRepository postRepository) {
         this.postCommentRepository = postCommentRepository;
