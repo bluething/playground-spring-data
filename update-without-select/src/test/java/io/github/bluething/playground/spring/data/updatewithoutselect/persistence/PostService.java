@@ -28,4 +28,18 @@ public class PostService {
 
         return posts;
     }
+
+    @Transactional
+    public List<Post> findAllWithFetch() {
+        List<PostEntity> postEntities = postRepository.findAllWithFetch();
+        List<Post> posts = postEntities.stream()
+                .map(postEntity ->
+                        new Post(postEntity.getId(), postEntity.getTitle(), postEntity.getPostComments().stream()
+                                .map(postComment ->
+                                        new PostComment(postComment.getId(), postComment.getReview())).toList())
+                )
+                .toList();
+
+        return posts;
+    }
 }
