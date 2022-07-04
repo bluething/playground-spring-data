@@ -22,7 +22,7 @@ public class PostService {
                 .map(postEntity ->
                     new Post(postEntity.getId(), postEntity.getTitle(), postEntity.getPostComments().stream()
                             .map(postComment ->
-                                new PostComment(postComment.getId(), postComment.getReview())).toList())
+                                new PostComment(postComment.getId(), postComment.getReview(), postComment.getPost().getId())).toList())
                 )
                 .toList();
 
@@ -36,7 +36,7 @@ public class PostService {
                 .map(postEntity ->
                         new Post(postEntity.getId(), postEntity.getTitle(), postEntity.getPostComments().stream()
                                 .map(postComment ->
-                                        new PostComment(postComment.getId(), postComment.getReview())).toList())
+                                        new PostComment(postComment.getId(), postComment.getReview(), postComment.getPost().getId())).toList())
                 )
                 .toList();
 
